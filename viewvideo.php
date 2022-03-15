@@ -54,7 +54,7 @@
     <div class="mainvideo">
         <div class="videoplayer" id="videoplayer" >
             <?php 
-            echo '<video id="videoplay" preload="metadata" width="1000" height="550"  controls webkit-playsinline playsinline poster=" '.$data['poster'].' " onclick="initializeVideo()">';
+            echo '<video id="videoplay" preload="metadata" width="1000" height="550"  webkit-playsinline playsinline poster=" '.$data['poster'].' " onclick="initializeVideo()">';
             $file = $data['file'];
             echo '<source src="'.$file.' " type="video/mp4">';
             ?>
