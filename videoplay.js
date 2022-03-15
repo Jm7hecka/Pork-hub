@@ -187,6 +187,7 @@ function fullscreen(){
         updateFullscreen();
     } else if(video.webkitRequestFullscreen) {
         video.webkitRequestFullscreen()
+        updateFullscreen();
     } else {
         if(video.enterFullscreen){
             video.enterFullscreen();
