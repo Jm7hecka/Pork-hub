@@ -54,7 +54,7 @@
     <div class="mainvideo">
         <div class="videoplayer" id="videoplayer" >
             <?php 
-            echo '<video id="videoplay" preload="metadata" width="1000" height="550" webkit-playsinline playsinline   onclick="initializeVideo()">';
+            echo '<video id="videoplay" preload="metadata" width="1000" height="550" webkit-playsinline playsinline   onloadedmetadata="initializeVideo()">';
             $file = $data['file'];
             echo '<source src="'.$file.' " type="video/mp4">';
             ?>
@@ -113,6 +113,15 @@
                    <button onclick="sharebtn()"><i class="fa fa-share-alt"></i> Share </button>
                  </div>'
         ?>
+        <div id='sharedivphone'>
+            <button onclick='closesharediv()' id='closesharediv'>x</button>
+            <div class='textcontainer'>
+                <p class='sharetext'>Share this video</p>   
+            </div>
+            <input type="text" id="shareurl">
+            <button id="shareurlbtn" onclick="copyurl()">Copy</button>  
+            <p id="copied"></p>
+        </div>
         <div id="sharediv">
             <p class="shareword"> Copy link</p>
             <div class="shareurl">
