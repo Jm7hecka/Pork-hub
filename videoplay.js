@@ -182,12 +182,17 @@ function fullscreen(){
     } else if (document.webkitFullscreenElement) {
         document.webkitExitFullscreen();
         normalscreen();
-    } else if (video.webkitEnterFullscreen || video.webkitRequestFullscreen) {
-        video.webkitEnterFullscreen() || video.webkitRequestFullscreen();
+    } else if (video.webkitEnterFullscreen ) {
+        video.webkitEnterFullscreen() ;
         updateFullscreen();
+    } else if(video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen()
     } else {
-        video.enterFullscreen();
-        video.requestFullscreen();
+        try{
+            video.enterFullscreen();
+        catch(exception_var){
+            video.requestFullscreen();
+        }
         updateFullscreen();
     }
 }
