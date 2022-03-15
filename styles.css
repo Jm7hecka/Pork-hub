@@ -62,7 +62,7 @@ body {
     border-top: 1px solid rgb(64,64,64);
 }
 .menu {
-    width:920px;
+    width:fit-content;
     height:100%;
     margin-left:auto;
     margin-right:auto;
@@ -72,15 +72,38 @@ body {
 
 .menuname {
     float:left;
-    position:inherit;
+    position:relative;
     font-size:11px;
     font-weight:700;
     color:white;
     text-decoration: none;
     height:100%;
     width:165px;
+    background-color: rgb(27, 27, 27);
     text-align: center;
 }
+.menuname:hover {
+    border-left: 0.8px solid rgb(64,64,64);
+    border-right:0.8px solid rgb(64,64,64);
+    border-top:0.8px solid rgb(64,64,64);
+    background-color: rgb(26, 26, 26);
+}
+.itemname {
+    display:flex;
+    width:fit-content;
+    margin-left:auto;
+    margin-right:auto;
+}
+.arrow {
+    margin-left:5px;
+    margin-top:-4px;
+    font-size: 9px;
+    display:flex;
+    transform: rotate(-45deg);
+    width:12px;
+    height:12px;
+}
+
 .activeline {
     background-color:rgb(255, 153, 0);
     height:2px;
@@ -110,14 +133,33 @@ body {
 .videonamelink {
     color:#c6c6c6;
     width:auto;
-    height:55px;
+    height:60px;
     margin:0;
 }
 .videonamelink:hover {
     color:rgb(255, 153, 0);
 }
 .view {
-    color:rgb(106, 106, 106)
+    position:relative;
+    color:rgb(106, 106, 106);
+    bottom: 0;
+    font-size: 14px;
+
+}
+.videocover {
+    object-fit: fill;
+}
+.thumbup {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.discover {
+    position: absolute;
+    width:100%;
+    z-index: 2;
+    height:475px;
+    background: black;
+    display:none;
 }
 .mainvideo {
     position:relative;
@@ -138,7 +180,9 @@ body {
     margin-top:-0.5%;
     display:flex;
 }
-
+#videocontrolphone {
+    display:none;
+}
 #videocontrol{
     background-color: rgba(0, 0, 0, 0.7);
     float:left;
@@ -229,29 +273,27 @@ body {
     width:100px;
     position:relative;
     margin:3% 5% 0 5%;
+    user-select: none;
 }
 .progress {
     width:1000px;  
     left:0.5%;
     position:absolute;
     transition-duration: 0.5s;
-    margin-top:10px;   
+    margin-top:-40px;   
+    z-index: 2;
 }
 #progress-bar {
     width:100%;
-    background-color: rgb(27, 27, 27);
-    height:5px;
+    -webkit-appearance: none; 
+    background: rgb(27, 27, 27);
+    height:6px;
     display:none;
     border:0;
+    z-index: 2;
+
 }
-progress::-moz-progress-bar {
-    background-color: rgb(255, 153, 0);
-    border:0;
-}
-progress::-webkit-progress-value {
-    background-color: rgb(255, 153, 0);
-    border:0;
-}
+
 .fullscreen{
    background:none;
    border:none;
@@ -290,15 +332,15 @@ progress::-webkit-progress-value {
     font-weight: 700;
     font-size: 14px;
     margin-left:2%;
-    border-bottom: 1px solid #1b1b1b;
+    border-bottom: 0.8px solid #1b1b1b;
 }
 .playback-animation {
     pointer-events: none;
     position: absolute;
-    top: 50%;
     left: 50%;
+    top:0;
     margin-left: -50px;
-    margin-top: -450px;
+    margin-top:220px;
     width: 100px;
     height: 100px;
     border-radius:50%;
@@ -340,7 +382,7 @@ progress::-webkit-progress-value {
 }
 #sharediv {
     height:160px;
-    border-bottom:1px solid #1b1b1b;
+    border-bottom:0.8px solid #1b1b1b;
     display:none;
     
 }
@@ -380,4 +422,162 @@ progress::-webkit-progress-value {
     font-weight: 700;
     font-size: 15px;
     margin-top:10px;
+}
+.author {
+    position:relative;
+    width:auto;
+    height:80px;
+    padding-bottom: 15px;
+    border-bottom: 0.8px solid #1b1b1b;
+    border-top: 0.8px solid #1b1b1b;
+    color:white;
+    margin-bottom:50px;
+}
+.author img {
+    height:60px;
+    border-radius: 50%;
+    margin-top: 10px;
+    float:left;
+    margin-right:10px;
+}
+.authorname {
+    font-size:16px;
+    font-weight: 700;
+    margin-top:25px;
+}
+.author button {
+    float:right;
+    width:220px;
+    height: 45px;
+    color:white;
+    font-size: 17px;
+    background: none;
+    border: 0.8px solid rgb(47, 47, 47);
+    border-radius: 5px;
+    margin-top:-45px;
+}
+.author button:hover {
+    color:rgb(255,154,0);
+    border-color: rgb(255,154,0);
+}
+.replay {
+    transform: rotate(85deg);
+    font-size:25px;
+    margin-top:15px;
+}
+.videolist {
+    width:795px;
+    height:auto;
+    margin-left:auto;
+    margin-right:auto;
+}
+@media only screen and (max-width:800px){
+    .menu {
+        display:none;
+    }
+    .header {
+        width:100%;
+    }
+    .searchbar{
+        display:none;
+    }
+    .main, .mainvideo {
+        width:100%;
+    }
+    .porkhublogo {
+        left:30%;
+        margin-top:10px;
+    }
+    .video, .videocover {
+        width:100%;
+        height:auto;
+    }
+    .videonamelink{
+        margin-left:10px;
+        margin-top:10px;
+        width:fit-content;
+        height:fit-content;
+    }
+    .view {
+        margin-left: 10px;
+    }
+    #videoplay {
+        margin-top:40px;
+        float: left;
+    }
+
+    .videoplayer{
+        height:auto;
+        width:100%;
+        float: left;
+        position:relative;
+        overflow:hidden;
+        margin-bottom:8vw;
+    }
+    .advert {
+        display:none
+
+    }
+    .playback-animation {
+        display:none;
+    }
+    #videocontrol{
+        display:none;
+    }
+    #videocontrolphone{
+        position:absolute;
+        display:block;
+        width:100%;
+        height: auto;
+        top:85%;
+        float:left;
+    }
+    #phoneplay {
+        position:absolute;
+        top:0;
+    }
+    #timeplayed{
+        background:none;
+        font-size: 14px;
+        color:rgb(204, 204, 204);
+        float:left;
+        margin-left:4vw;
+        margin-top:4vw;
+        font-weight: 400;
+    }
+    #duration {
+        background:none;
+        font-size: 14px;
+        color:rgb(204, 204, 204);
+        float:right;
+        margin-right:12vw;
+        margin-top:-4vw;
+        font-weight: 400;
+    }
+    #progress-bar {
+        width:100%;
+        background:rgb(204, 204, 204);
+        height:4px;
+        display:block;
+    }
+    .progressphone {
+        margin-top:5.5vw;
+        width:58%;
+        height:10px;
+        margin-left:16vw
+    }
+    .fullscreen {
+        float:right;
+        margin-right:-20vw;
+        margin-top:-6.5vw;
+    }
+    .videorespo {
+        margin-top:2vw;
+        font-size: 16px;
+        width:fit-content;
+        margin-right:7.5vw;
+    }
+    .videoinfo {
+        border-bottom:0;
+    }
 }
