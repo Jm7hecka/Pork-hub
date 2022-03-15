@@ -11,6 +11,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     var duration = document.getElementById('duration1');
     var fullscreenicon= document.getElementById('fullscreen1');
     var timeplayed = document.getElementById('timeplayed1');
+    player.addEventListener('fullscreenchange', function() {
+        if(!document.fullscreenElement){
+            player.setAttribute('playsinline', '');
+        };
+    })
 } else{
     var progressBar = document.getElementById('progress-bar');
     progressBar.addEventListener('input', changetime);
@@ -175,6 +180,7 @@ function bardisappear(){
 
 }
 function fullscreen(){
+    player.removeAttribute('playsinline');
     var video = document.getElementById('videoplayer');
     if (document.fullscreenElement) {
         document.exitFullscreen();
