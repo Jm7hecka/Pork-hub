@@ -1,11 +1,36 @@
 var player = document.getElementById('videoplay');
 var video = document.getElementById('videoplayer');
 var progressBar = document.getElementById('progress-bar');
+progressBar.addEventListener('input', changetime);
 player.addEventListener('timeupdate', timeplayed);
 video.addEventListener('mouseenter', controlappear);
 video.addEventListener('mousemove', controlappear);
 video.addEventListener('mouseleave', controldisappear);
-player.addEventListener('click', animatePlayback)
+player.addEventListener('click', animatePlayback);
+player.addEventListener('ended', ended);
+window.addEventListener('keypress', shortcut);
+
+function shortcut(event) {
+    var event = window.event;
+    event.preventDefault();
+    switch (event.key) {
+        case ' ':
+            if (player.setAttribute('onclick', 'playvideo()')){
+                playvideo();
+            } else {
+                initializeVideo();
+            }
+            
+        case 'ArrowLeft':
+            player.currentTime = player.currenttime - 5.0 ;
+        case 'ArrowRight':
+            player.currentTime = player.currenttime + 5.0 ;
+        case 'f':
+            fullscreen();
+
+    }
+}
+
 function formatTime(timeInSeconds) {
     const result = new Date(timeInSeconds * 1000).toISOString().substr(11, 8);
     return {
@@ -15,20 +40,32 @@ function formatTime(timeInSeconds) {
 }
 
 function initializeVideo() {
-    document.getElementById('playback-animation').style.opacity='0'
-    document.getElementById('progress-bar').style.display='block';
-    document.getElementById('icon').classList.remove('animationimg')
-    document.getElementById('volumebar').value = 1;
-    document.getElementById('volumebar').style.background=' rgb(255,154,0)';
-    document.getElementById('videocontrol').style.display='flex'; 
-    document.getElementById('progress-bar').style.display='block';
-    const videoDuration = Math.round(player.duration);
-    const time = formatTime(videoDuration);
-    duration.innerText = `${time.minutes}:${time.seconds}`;
-    duration.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`);
-    progressBar.setAttribute('max', videoDuration);
-    player.setAttribute('onclick', 'playvideo()');
-    playvideo();
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        var duration = document.getElementById('duration');
+        const videoDuration = Math.round(player.duration);
+        const time = formatTime(videoDuration);
+        duration.innerText = `${time.minutes}:${time.seconds}`;
+        duration.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`);
+        progressBar.setAttribute('max', player.duration);
+        player.setAttribute('onclick', 'playvideo()');
+        playvideo();
+    } else{
+        var duration = document.getElementById('duration');
+        document.getElementById('playback-animation').style.opacity='0'
+        document.getElementById('progress-bar').style.display='block';
+        document.getElementById('icon').classList.remove('animationimg')
+        document.getElementById('volumebar').value = 1;
+        document.getElementById('volumebar').style.background=' rgb(255,154,0)';
+        document.getElementById('videocontrol').style.display='flex'; 
+        document.getElementById('progress-bar').style.display='block';
+        const videoDuration = Math.round(player.duration);
+        const time = formatTime(videoDuration);
+        duration.innerText = `${time.minutes}:${time.seconds}`;
+        duration.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`);
+        progressBar.setAttribute('max', player.duration);
+        player.setAttribute('onclick', 'playvideo()');
+        playvideo();
+    }
 }
 
 function playvideo() {
@@ -36,12 +73,14 @@ function playvideo() {
     if(player.paused) {
         player.play();
         element.textContent = "\u23F8";
+        element.setAttribute('title', 'Pause');
         document.getElementById('icon').src='playicon.png';
         document.getElementById('icon').style='transform:scale(0.1)';
         animatePlayback();
     }else {
         player.pause();
         element.textContent = "\u23F5";
+        element.setAttribute('title', 'Play');
         document.getElementById('icon').src='pauseicon.png';
         document.getElementById('icon').style='transform:scale(0.2)';
         animatePlayback();
@@ -73,6 +112,7 @@ function mute(){
         player.muted = true;
         document.getElementById('volumebar').value = 0;
         document.getElementById('mute').innerHTML='<i class="fas fa-volume-mute"></i>';
+        document.getElementById('mute').setAttribute('title', 'Unmute');
         volumebar.style.width='0px';
         volumebar.classList.remove('showthumb');
         volumebar.classList.add('hidethumb');
@@ -86,8 +126,12 @@ function timeplayed() {
     progressBar.value = player.currentTime;
     timeplayed.innerText = `${time.minutes}:${time.seconds}`;
     timeplayed.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`);
+    var value = (progressBar.value/player.duration)*100 +'%'; 
+    progressBar.style.background='linear-gradient(to right,  rgb(255,154,0) ' + value + ', rgb(27,27,27) '+ value +',  rgb(27,27,27) 100%)';
+    
 }
 function barappear(){
+    var volume = document.getElementById('volume');
     if (player.muted) {
 
     }else {
@@ -96,15 +140,19 @@ function barappear(){
         volumebar.style.width='100px';
         volumebar.classList.remove('hidethumb');
         volumebar.classList.add('showthumb');
+        volume.addEventListener('mouseenter', barappear);
+        volume.addEventListener('mouseleave', bardisappear);
     }
     
 }
 function bardisappear(){
     var volumebar = document.getElementById('volumebar');
-    window.setTimeout(function(){volumebar.style.width='0px';
-                                 volumebar.classList.remove('showthumb');
-                                 volumebar.classList.add('hidethumb');}, 1000);
-    
+    window.setTimeout(function() { 
+        volumebar.style.width='0px';
+        volumebar.classList.remove('showthumb');
+        volumebar.classList.add('hidethumb');  
+    }, 1000)
+
 }
 function fullscreen(){
     var video = document.getElementById('videoplayer');
@@ -127,15 +175,16 @@ function updateFullscreen(){
     document.getElementById('videocontrol').style.width='100%';
     document.getElementById('progress').style.width='99%';
     document.getElementById('fullscreen').style.marginLeft='57%';
-    document.getElementById('playback-animation').style.marginTop='-50px'
-    document.getElementById('fullscreen').innerHTML='<span class="iconify" data-icon="mdi:fullscreen-exit" style="color: white;" data-width="31" data-height="31"></span>'
+    document.getElementById('playback-animation').style.marginTop='350px'
+    document.getElementById('fullscreen').innerHTML='<span class="iconify" data-icon="mdi:fullscreen-exit" style="color: white;" data-width="31" data-height="31"></span>';
+    document.getElementById('fullscreen').setAttribute('title', 'Exit full screen')
     controlappear();
 }
 function normalscreen() {
     document.getElementById('videocontrol').style.width='1000px';
     document.getElementById('progress').style.width='99%';
     document.getElementById('fullscreen').style.marginLeft= '38%';
-    document.getElementById('playback-animation').style.marginTop='-150px'
+    document.getElementById('playback-animation').style.marginTop='220px'
     document.getElementById('fullscreen').innerHTML='<i class="material-icons" id="fullicon">&#xe5d0;</i>';
 }
 function controlappear(){
@@ -195,4 +244,14 @@ function copyurl(){
     navigator.clipboard.writeText(document.getElementById('shareurl').value);
     document.getElementById('copied').innerText='Copied to clipboard'
     window.setTimeout(function() {document.getElementById('copied').innerText=''}, 5000)
+}
+function changetime() {
+    var value = progressBar.value;
+    player.currentTime = value; 
+    var playvalue = (progressBar.value/player.duration)*100 +'%'; 
+    progressBar.style.background='linear-gradient(to right,  rgb(255,154,0) ' + playvalue + ', rgb(27,27,27) '+ playvalue +',  rgb(27,27,27) 100%)';
+}
+function ended() {
+    var element = document.getElementById('play');
+    element.innerHTML='<span class="iconify , replay" data-icon="mdi:replay" data-flip="horizontal"></span>'
 }
