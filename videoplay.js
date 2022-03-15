@@ -300,7 +300,11 @@ function changetime() {
     var value = progressBar.value;
     player.currentTime = value; 
     var playvalue = (progressBar.value/player.duration)*100 +'%'; 
-    progressBar.style.background='linear-gradient(to right,  rgb(255,154,0) ' + playvalue + ', rgb(27,27,27) '+ playvalue +',  rgb(27,27,27) 100%)';
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        progressBar.style.background=`linear-gradient(to right,  rgb(255,255,255) ${playvalue}, rgb(204, 204, 204) ${playvalue},  rgb(204, 204, 204)`;
+    }else{
+        progressBar.style.background=`linear-gradient(to right,  rgb(255,154,0) ${playvalue}, rgb(27,27,27) ${playvalue},  rgb(27,27,27) 100%)`;
+    }
 }
 function ended() {
     var element = document.getElementById('play');
