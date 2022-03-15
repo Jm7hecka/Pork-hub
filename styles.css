@@ -225,10 +225,13 @@ body {
 .hidethumb::-webkit-slider-thumb{
     -webkit-appearance: none;
     appearance: none;
-}
+    width:0;
+    height: 0;
 .hidethumb::-moz-range-thumb {
     -webkit-appearance: none;
     appearance: none;
+    width:0;
+    height: 0;
 }
 .showthumb::-webkit-slider-thumb {
     -webkit-appearance: none;
