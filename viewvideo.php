@@ -54,25 +54,25 @@
     <div class="mainvideo">
         <div class="videoplayer" id="videoplayer" >
             <?php 
-            echo '<video id="videoplay" preload="metadata" width="1000" height="550"  webkit-playsinline playsinline poster=" '.$data['poster'].' " onclick="initializeVideo()">';
+            echo '<video id="videoplay" preload="metadata" width="1000" height="550" webkit-playsinline playsinline   onclick="initializeVideo()">';
             $file = $data['file'];
             echo '<source src="'.$file.' " type="video/mp4">';
             ?>
             </video>
-            <button id='phoneplay' ></button>
+            <button id='phoneplay' onclick="playvideo()" > &#x25B7; </button>
             <div id='videocontrolphone'>
-                <time id="timeplayed">00:00</time>
-                <div class="progressphone">
-                    <input type='range' id="progress-bar" step="0.01" value="0" min="0"></input>
+                <time id="timeplayed1">00:00</time>
+                <div class="progressphone" id="progressphone">
+                    <input type='range' id="progress-barphone" step="0.01" value="0" min="0"></input>
                 </div>
-                <time id="duration">00:00</time> 
-                <button class="fullscreen" title="Full screen" onclick="fullscreen()" id="fullscreen"><i class="material-icons" id="fullicon">&#xe5d0;</i></button>
+                <time id="duration1">00:00</time> 
+                <button class="fullscreen" title="Full screen" onclick="fullscreen()" id="fullscreen1"><i class="material-icons" id="fullicon">&#xe5d0;</i></button>
             </div>
             <div class="playback-animation" id="playback-animation">
-                <img id="icon" class='animationimg' src="playicon.png">
+                <img id="icon" class='playiconanimate' src="playicon.png">
             </div>
             <div class="progress" id="progress">
-                <input type='range' id="progress-bar" step="0.01" value="0" min="0"></input>
+                <input type='range' id="progress-bar" class='progresshide' step="0.01" value="0" min="0"></input>
             </div>
             <div id="videocontrol">
                 <div class="leftbar">
