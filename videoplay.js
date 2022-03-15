@@ -182,11 +182,12 @@ function fullscreen(){
     } else if (document.webkitFullscreenElement) {
         document.webkitExitFullscreen();
         normalscreen();
-    } else if (video.webkitEnterFullscreen) {
-        video.webkitEnterFullscreen();
+    } else if (video.webkitEnterFullscreen || video.webkitRequestFullscreen) {
+        video.webkitEnterFullscreen() || video.webkitRequestFullscreen();
         updateFullscreen();
     } else {
         video.enterFullscreen();
+        video.requestFullscreen();
         updateFullscreen();
     }
 }
