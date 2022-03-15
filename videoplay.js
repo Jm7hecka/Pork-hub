@@ -176,7 +176,6 @@ function bardisappear(){
 
 }
 function fullscreen(){
-    player.removeAttribute('playsinline');
     var video = document.getElementById('videoplayer');
     if (document.fullscreenElement) {
         document.exitFullscreen();
@@ -184,8 +183,8 @@ function fullscreen(){
     } else if (document.webkitFullscreenElement) {
         document.webkitExitFullscreen();
         normalscreen();
-    } else if (video.webkitEnterFullscreen ) {
-        video.webkitEnterFullscreen() ;
+    } else if (player.webkitEnterFullscreen ) {
+        player.webkitEnterFullscreen() ;
         updateFullscreen();
     } else if(video.webkitRequestFullscreen) {
         video.webkitRequestFullscreen()
