@@ -227,12 +227,22 @@ body {
     appearance: none;
     width:0;
     height: 0;
+    border-radius: 0;
+    background: white;
+    border:0;
+    cursor: pointer;
+}
 }
 .hidethumb::-moz-range-thumb {
     -webkit-appearance: none;
     appearance: none;
     width:0;
     height: 0;
+    border-radius: 0;
+    background: white;
+    border:0;
+    cursor: pointer;
+}
 }
 .showthumb::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -624,10 +634,11 @@ body {
         margin-top:-4vw;
         font-weight: 400;
     }
-    #progress-barphone {
+        #progress-barphone {
         width:100%;
+        -webkit-appearance: none; 
         background:rgb(204, 204, 204);
-        height:4px;
+        height:3px;
         display:block;
     }
     .progressphone {
@@ -635,6 +646,26 @@ body {
         width:58%;
         height:10px;
         margin-left:16vw
+    }
+    .progressthumb::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width:8px;
+        height:8px;
+        border-radius: 50%;
+        background: white;
+        cursor: pointer;
+        transition-duration:  0.5s;
+    }
+    .progressthumb::-moz-range-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width:8px;
+        height:8px;
+        border-radius: 50%;
+        background: white;
+        cursor: pointer;
+        transition-duration:  0.5s;
     }
     .fullscreen {
         float:right;
