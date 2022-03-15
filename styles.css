@@ -225,24 +225,10 @@ body {
 .hidethumb::-webkit-slider-thumb{
     -webkit-appearance: none;
     appearance: none;
-    display:none;
-    width:0;
-    height: 20px;
-    border-radius: 0;
-    background: white;
-    border:0;
-    cursor: pointer;
 }
 .hidethumb::-moz-range-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width:0;
-    height: 20px;
-    display:none;
-    border-radius: 0;
-    background: white;
-    border:0;
-    cursor: pointer;
 }
 .showthumb::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -277,23 +263,68 @@ body {
 }
 .progress {
     width:1000px;  
+    height:6px;
     left:0.5%;
     position:absolute;
     transition-duration: 0.5s;
     margin-top:-40px;   
     z-index: 2;
+
 }
 #progress-bar {
     width:100%;
     -webkit-appearance: none; 
     background: rgb(27, 27, 27);
-    height:6px;
+    height:5px;
     display:none;
     border:0;
     z-index: 2;
+    transition-duration:  0.5s;
 
 }
-
+.progressthumb::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width:12px;
+    height:12px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    transition-duration:  0.5s;
+}
+.progressthumb::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width:12px;
+    height:12px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    transition-duration:  0.5s;
+}
+.progresshide::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width:0;
+    height:0;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    transition-duration:  0.5s;
+}
+.progresshide::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width:0;
+    height:0;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    transition-duration:  0.5s;
+}
+#phoneplay {
+    display:none;
+}
 .fullscreen{
    background:none;
    border:none;
@@ -351,8 +382,16 @@ body {
     opacity: 1;
     transform: scale(1);
 }
-.animationimg {
-    transform:scale(0.1)
+
+.playiconanimate {
+    height:70px;
+    width:auto;
+    margin-left:7px;
+}
+.pauseiconanimate {
+    height:50px;
+    width:auto;
+    margin-left:0px;
 }
 .videorespo {
     float:right;
@@ -471,6 +510,20 @@ body {
     margin-left:auto;
     margin-right:auto;
 }
+
+.playicon {
+    border:3px solid rgb(204, 204, 204);
+    padding:12px 2px;
+    margin-right:5px;
+}
+
+.pausebtn{
+    font-size: 4px;
+    margin-left:1vw;
+    margin-top:7vw;
+}
+
+
 @media only screen and (max-width:800px){
     .menu {
         display:none;
@@ -504,6 +557,8 @@ body {
     #videoplay {
         margin-top:40px;
         float: left;
+        background: black;
+        transition-duration: 0.5s;
     }
 
     .videoplayer{
@@ -529,14 +584,24 @@ body {
         display:block;
         width:100%;
         height: auto;
-        top:85%;
+        top:100%;
         float:left;
+        transition-duration: 0.5s;
     }
     #phoneplay {
         position:absolute;
-        top:0;
+        top:48%;
+        display:block;
+        background: none;
+        color:rgb(204, 204, 204);
+        border:none;
+        font-size: 12vw;
+        width:fit-content;
+        left:45vw;
+        transition-duration: 0.5s;
+        opacity:0;
     }
-    #timeplayed{
+    #timeplayed1{
         background:none;
         font-size: 14px;
         color:rgb(204, 204, 204);
@@ -545,7 +610,7 @@ body {
         margin-top:4vw;
         font-weight: 400;
     }
-    #duration {
+    #duration1 {
         background:none;
         font-size: 14px;
         color:rgb(204, 204, 204);
@@ -554,7 +619,7 @@ body {
         margin-top:-4vw;
         font-weight: 400;
     }
-    #progress-bar {
+    #progress-barphone {
         width:100%;
         background:rgb(204, 204, 204);
         height:4px;
@@ -576,8 +641,35 @@ body {
         font-size: 16px;
         width:fit-content;
         margin-right:7.5vw;
+        border-bottom: 0.8px solid #1b1b1b;
+        position:relative;
     }
     .videoinfo {
         border-bottom:0;
+        position:relative;
+    }
+    .author{
+        display:block;
+        position:relative;
+        top:2%;
+        border:0;
+
+    }
+    .author img{
+        margin-top:-6%;
+        margin-left:2%;
+    }
+    .authorname {
+        margin-left:5%;
+    }
+    .author button{
+        float:left;
+        width:95vw;
+        position:relative;
+        margin-top:3%;
+    }
+
+    .videolist {
+        width:100%;
     }
 }
