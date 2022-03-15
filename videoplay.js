@@ -59,13 +59,13 @@ function formatTime(timeInSeconds) {
 function initializeVideo() {
     if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
         document.getElementById('phoneplay').textContent = "\u25B7";
+        controlappearphone()
         const videoDuration = Math.round(player.duration);
         const time = formatTime(videoDuration);
         duration.innerText = `${time.minutes}:${time.seconds}`;
         duration.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`);
         progressBar.setAttribute('max', player.duration);
         player.setAttribute('onclick', 'controlappearphone()');
-        playvideo();
     } else{
         document.getElementById('playback-animation').style.opacity='0'
         document.getElementById('progress-bar').style.display='block';
@@ -80,7 +80,7 @@ function initializeVideo() {
         duration.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`);
         progressBar.setAttribute('max', player.duration);
         player.setAttribute('onclick', 'playvideo()');
-        playvideo();
+        controlappear()
     }
 }
 
@@ -227,13 +227,17 @@ var playbutton = document.getElementById('phoneplay');
 function controlappearphone() {
     bar.style.top='85%';
     player.style.opacity='0.4';
-    playbutton.style.opacity='1';
+    if(playbutton.style.display='block'){
+        playbutton.style.opacity='1';
+    };
     player.setAttribute('onclick', 'controldisappearphone()');
 }
 function controldisappearphone() {
     bar.style.top='100%';
     player.style.opacity='1';
-    playbutton.style.opacity='0';
+    if(playbutton.style.opacity='0'){
+        playbutton.style.display='none';
+    };
     player.setAttribute('onclick', 'controlappearphone()');
 }
 var playbackAnimation = document.getElementById('playback-animation');
@@ -271,8 +275,13 @@ function respobtn3(){
     
 }
 function sharebtn(){
-    document.getElementById('sharediv').style.display='block';
-    document.getElementById('shareurl').value = window.location.href;
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        document.getElementById('sharedivphone').style.display='block';
+        document.getElementById('shareurl').value = window.location.href;
+    }else{
+        document.getElementById('sharediv').style.display='block';
+        document.getElementById('shareurl').value = window.location.href;
+    }
 }
 function copyurl(){
     navigator.clipboard.writeText(document.getElementById('shareurl').value);
@@ -297,4 +306,7 @@ function progressthumb() {
         progressBar.classList.add('progresshide');
         progressBar.classList.remove('progressthumb');
     });
+}
+function closesharediv(){
+    document.getElementById('sharedivphone').style.display='none';
 }
