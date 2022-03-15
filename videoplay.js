@@ -188,9 +188,9 @@ function fullscreen(){
     } else if(video.webkitRequestFullscreen) {
         video.webkitRequestFullscreen()
     } else {
-        try{
+        if(video.enterFullscreen){
             video.enterFullscreen();
-        catch(exception_var){
+        }else{
             video.requestFullscreen();
         }
         updateFullscreen();
