@@ -521,6 +521,11 @@ body {
     font-size: 4px;
 }
 
+#sharedivphone {
+    display:none;
+}
+
+
 
 @media only screen and (max-width:800px){
     .menu {
