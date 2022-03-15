@@ -55,7 +55,7 @@ $four = array('file'=>'4.mp4',
               'dislike'=>100, 
               'save'=>2006, 
               'authorname'=>'Jm7 official', 
-              'authorimg'=>'https://github.com/jm7meme/jm7meme.github.io/blob/main/jm7newlogo2.png',
+              'authorimg'=>'jm7newlogo.png',
               'originalurl'=>'http://localhost:8080/porkhub/viewvideo.php?video=04');
 $idarray = array('01'=> $one, '02'=> $two, '03'=> $three, '04'=> $four);
 $_SESSION['array'] = $idarray[$id];
