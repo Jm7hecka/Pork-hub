@@ -597,7 +597,8 @@ body {
         border:none;
         font-size: 12vw;
         width:fit-content;
-        left:45vw;
+        height:fit-content;
+        left:45%;
         transition-duration: 0.5s;
         opacity:0;
     }
