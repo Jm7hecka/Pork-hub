@@ -56,7 +56,7 @@
     <div class="mainvideo">
         <div class="videoplayer" id="videoplayer" >
             <?php 
-            echo '<video id="videoplay" preload="metadata" width="1000" height="550" onloadedmetadata="initializeVideo()">';
+            echo '<video id="videoplay" playsinline preload="metadata" width="1000" height="550" onloadedmetadata="initializeVideo()">';
             $file = $data['file'];
             echo '<source src="'.$file.' " type="video/mp4">';
             ?>
