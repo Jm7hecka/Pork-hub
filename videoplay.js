@@ -184,9 +184,11 @@ function fullscreen(){
         normalscreen();
     } else if (video.webkitRequestFullscreen) {
         video.webkitRequestFullscreen();
+        video.webkitEnterFullscreen();
         updateFullscreen();
     } else {
         video.requestFullscreen(); 
+        video.enterFullscreen();
         updateFullscreen();
     }
 }
