@@ -1,15 +1,19 @@
 var player = document.getElementById('videoplay');
 var video = document.getElementById('videoplayer');
 var progressBar = document.getElementById('progress-bar');
-progressBar.addEventListener('input', changetime);
-player.addEventListener('timeupdate', timeplayed);
-video.addEventListener('mouseenter', controlappear);
-video.addEventListener('mousemove', controlappear);
-video.addEventListener('mouseleave', controldisappear);
-player.addEventListener('click', animatePlayback);
-player.addEventListener('ended', ended);
-window.addEventListener('keypress', shortcut);
-
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    player.addEventListener('ended', ended);
+    player.addEventListener('timeupdate', timeplayed);
+} else {    
+    progressBar.addEventListener('input', changetime);
+    player.addEventListener('timeupdate', timeplayed);
+    video.addEventListener('mouseenter', controlappear);
+    video.addEventListener('mousemove', controlappear);
+    video.addEventListener('mouseleave', controldisappear);
+    player.addEventListener('click', animatePlayback);
+    player.addEventListener('ended', ended);
+    window.addEventListener('keypress', shortcut);
+}
 function shortcut(event) {
     var event = window.event;
     event.preventDefault();
