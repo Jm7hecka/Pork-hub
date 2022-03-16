@@ -148,7 +148,7 @@ function timeplayed() {
     timeplayed.innerText = `${time.minutes}:${time.seconds}`;
     timeplayed.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`);
     var value = (progressBar.value/player.duration)*100 +'%'; 
-    progressBar.style.background='linear-gradient(to right,  rgb(255,154,0) ' + value + ', rgb(27,27,27) '+ value +',  rgb(27,27,27) 100%)';
+    
     
 }
 function barappear(){
