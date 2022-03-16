@@ -73,6 +73,9 @@ require 'array.php';
                     </a>
                     <p class="view">'.$array[$num]['view'].' views <i class="fa fa-thumbs-up , thumbup"></i>'.strval(round(($array[$num]['like']/$array[$num]['view'])*100)) .'% </p>
                   </div>';
+            if($num == count($array)-1 ){
+                break;
+            }
         }
     ?> 
         
