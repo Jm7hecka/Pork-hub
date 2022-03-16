@@ -57,6 +57,16 @@ $four = array('file'=>'4.mp4',
               'authorname'=>'Jm7 official', 
               'authorimg'=>'jm7newlogo.png',
               'originalurl'=>'http://localhost:8080/porkhub/viewvideo.php?video=04');
-$idarray = array('01'=> $one, '02'=> $two, '03'=> $three, '04'=> $four);
+$five = array('file'=>'./video/5.mp4',
+              'poster'=>'./video/5.mp4#t=24', 
+              'vidname'=>'Fat pork is attracted by hot pot!', 
+              'view'=> '589', 
+              'like'=>'132' , 
+              'dislike'=>'89' , 
+              'save'=>'64' , 
+              'authorname'=>'li sun', 
+              'authorimg'=>'https://yt3.ggpht.com/48uvMpwYcLKZOI_PRRNkI6GTEwkZHzWPpGkp3R-OpcW_g_qfqB6jOi_ZRc3hj6SFIaDDGs4zyR0=s88-c-k-c0x00ffffff-no-rj',
+              'originalurl'=>'https://www.youtube.com/watch?v=UpKJuGQ9c0U');
+$idarray = array('01'=> $one, '02'=> $two, '03'=> $three, '04'=> $four, '05'=>$five);
 $_SESSION['array'] = $idarray[$id];
 ?>
