@@ -227,23 +227,15 @@ body {
     appearance: none;
     width:0;
     height: 0;
-    border-radius: 0;
-    background: white;
-    border:0;
-    cursor: pointer;
 }
-}
+
 .hidethumb::-moz-range-thumb {
     -webkit-appearance: none;
     appearance: none;
     width:0;
     height: 0;
-    border-radius: 0;
-    background: white;
-    border:0;
-    cursor: pointer;
 }
-}
+
 .showthumb::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
