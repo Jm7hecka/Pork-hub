@@ -147,7 +147,7 @@ function timeplayed() {
     progressBar.value = player.currentTime;
     timeplayed.innerText = `${time.minutes}:${time.seconds}`;
     timeplayed.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`);
-    var value = (progressBar.value/player.duration)*100 +'%'; 
+    changetime();
     
     
 }
