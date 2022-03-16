@@ -11,7 +11,7 @@
 <html>
 <head>
     <title> Free Pork Video & Peppa Pig </title>
-    <link rel="icon" href="porkhubicon.png" />
+    <link rel="icon" href="porkhublogo.ico" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -21,8 +21,6 @@
     <script type="text/javascript" src="videoplay.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
 </head>
 <body>
     <div class="top">
@@ -56,7 +54,7 @@
     <div class="mainvideo">
         <div class="videoplayer" id="videoplayer" >
             <?php 
-            echo '<video id="videoplay" playsinline preload="metadata" width="1000" height="550" onloadedmetadata="initializeVideo()">';
+            echo '<video id="videoplay" preload="metadata" width="1000" height="550"playsinline   onloadedmetadata="initializeVideo()">';
             $file = $data['file'];
             echo '<source src="'.$file.' " type="video/mp4">';
             ?>
@@ -65,7 +63,7 @@
             <div id='videocontrolphone'>
                 <time id="timeplayed1">00:00</time>
                 <div class="progressphone" id="progressphone">
-                    <input type='range' id="progress-barphone" step="0.01" value="0" min="0"></input>
+                    <input type='range' class='progressthumb'  id="progress-barphone" step="0.01" value="0" min="0"></input>
                 </div>
                 <time id="duration1">00:00</time> 
                 <button class="fullscreen" title="Full screen" onclick="fullscreen()" id="fullscreen1"><i class="material-icons" id="fullicon">&#xe5d0;</i></button>
@@ -142,43 +140,26 @@
         </div>';
         ?>
         <div class='videolist'>
-            <div class="video">
-               <a href="viewvideo.php?video=01" class="videolink">
-                   <video width="255" height="140" class="videocover">
-                       <source src="1.mp4#t=10" type="video/mp4">
-                   </video>
-                    <p class="videonamelink"> Peppa Pig is playing with her family!</p>
-               </a>
-               <p class="view"> 69 views <i class="fa fa-thumbs-up , thumbup"></i> 70%</p>
-           </div>
-           <div class="video">
-               <a href="viewvideo.php?video=02" class="videolink">
-                   <video width="255" height="140" class="videocover" >
-                       <source src="2.mp4#t=5" type="video/mp4">
-                   </video>
-                   <p class="videonamelink"> Long pork makes her satisfying!</p>
-               </a>
-               <p class="view"> 84 views  <i class="fa fa-thumbs-up , thumbup"></i> 60%</p>
-           </div>
-           <div class="video">
-               <a href="viewvideo.php?video=03" class="videolink">
-                   <video width="255" height="140" class="videocover">
-                       <source src="3.mp4#t=10" type="video/mp4">
-                   </video>
-                   <p class="videonamelink"> Hot pan wants to fill up by</p>
-               </a>
-               <p class="view"> 1503 views  <i class="fa fa-thumbs-up , thumbup"></i> 27%</p>
-               
-           </div>
-           <div class="video">
-               <a href="viewvideo.php?video=04" class="videolink">
-                   <video width="255" height="140" class="videocover">
-                       <source src="4.mp4#t=5" type="video/mp4">
-                   </video>
-                   <p class="videonamelink"> Our pork hub intro!</p>
-               </a>
-               <p class="view"> 10000 views  <i class="fa fa-thumbs-up , thumbup" ></i> 46%</p>
-           </div>
+        <?php
+            if(isset($_SESSION['idarray'])){
+                $idarray = $_SESSION['idarray'];
+            }
+            $array = array_values($idarray);
+            for ($num =0;$num <= count($array); $num ++ ){
+                echo '<div class="video">
+                        <a href="viewvideo.php?video=0'. $num +1 .'" class="videolink">
+                            <video width="255" height="140" class="videocover">
+                                <source src="'.$array[$num]['poster'].'" type="video/mp4">
+                            </video>
+                            <p class="videonamelink">'.$array[$num]['vidname'].'</p>
+                        </a>
+                        <p class="view">'.$array[$num]['view'].' views <i class="fa fa-thumbs-up , thumbup"></i>'.strval(round(($array[$num]['like']/$array[$num]['view'])*100)) .'% </p>
+                      </div>';
+                if($num == count($array)-1 ){
+                    break;
+                }
+            }
+        ?> 
         </div>
     </div>
     <script type="text/javascript" src="videoplay.js"></script>
