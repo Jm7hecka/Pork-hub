@@ -679,12 +679,12 @@ body {
     }
     #phoneplay {
         position:absolute;
-        top:48%;
+        top:45%;
         display:block;
         background: none;
         color:rgb(204, 204, 204);
         border:none;
-        font-size: 12vw;
+        font-size: 45px;
         width:50px;
         height:50px;
         left:35vw;
