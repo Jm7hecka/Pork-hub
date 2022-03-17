@@ -679,7 +679,7 @@ body {
     }
     #phoneplay {
         position:absolute;
-        top:42%;
+        top:40%;
         display:block;
         background: none;
         color:rgb(204, 204, 204);
@@ -687,7 +687,7 @@ body {
         font-size: 50px;
         width:50px;
         height:50px;
-        left:35vw;
+        left:35%;
         transition-duration: 0.5s;
         opacity:0;
     }
@@ -851,7 +851,7 @@ body {
         position: absolute;
         z-index:10;
         left:43vw;
-        top:52%;
+        top:50%;
         width: 40px;
         height: 40px;
         background: #0000005d;
