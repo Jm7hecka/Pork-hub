@@ -60,7 +60,7 @@
             echo '<source src="'.$file.' " type="video/mp4">';
             ?>
             </video>
-            <button id='phoneplay' onclick="playvideo()" > &#x25B7; </button>
+            <button id='phoneplay' onclick="playvideo()" >&#x25B7;</button>
             <div id='videocontrolphone'>
                 <time id="timeplayed1">00:00</time>
                 <div class="progressphone" id="progressphone">
