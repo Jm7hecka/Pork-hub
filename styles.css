@@ -687,7 +687,7 @@ body {
         font-size: 12vw;
         width:50px;
         height:50px;
-        left:35%;
+        left:45vw;
         transition-duration: 0.5s;
         opacity:0;
     }
@@ -845,4 +845,31 @@ body {
         right:3%;
         z-index: 2;
     }
+    .lds-spinner {
+        color: official;
+        display: block;
+        position: absolute;
+        z-index:10;
+        left:43vw;
+        top:52%;
+        width: 40px;
+        height: 40px;
+        background: #0000005d;
+        border-radius: 50%;
+        padding: 5px 5px;
+      }
+      .lds-spinner div {
+        transform-origin: 20px 20px;
+        animation: lds-spinner 1.2s linear infinite;
+      }
+      .lds-spinner div:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 3px;
+        left: 18px;
+        width: 3px;
+        height: 9px;
+        border-radius: 20%;
+        background: rgb(255,154,0);
 }
