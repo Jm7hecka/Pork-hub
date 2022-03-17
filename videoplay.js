@@ -59,6 +59,7 @@ function formatTime(timeInSeconds) {
 
 function initializeVideo() {
     if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        document.getElementById('lds-spinner').style.display='none';
         document.getElementById('phoneplay').textContent = "\u25B7";
         controlappearphone()
         const videoDuration = Math.round(player.duration);
@@ -68,6 +69,7 @@ function initializeVideo() {
         progressBar.setAttribute('max', player.duration);
         player.setAttribute('onclick', 'controlappearphone()');
     } else{
+        document.getElementById('lds-spinner').style.display='none';
         document.getElementById('playback-animation').style.opacity='0'
         document.getElementById('progress-bar').style.display='block';
         document.getElementById('icon').classList.remove('animationimg')
@@ -84,7 +86,9 @@ function initializeVideo() {
         controlappear()
     }
 }
-
+function loading() {
+    document.getElementById('lds-spinner').style.display='block';
+}
 function playvideo() {
     var element = document.getElementById('play');
     if(player.paused) {
