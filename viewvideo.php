@@ -104,15 +104,25 @@
         </div>
         <?php
         $likeper = strval(round(($data['like']/$data['view'])*100)) .'%';
+        $datetime1 = date_create(date('Y-m-d'));
+        $datetime2 = $data['date'];
+        $interval = date_diff($datetime1, $datetime2);
+        if(intval($interval->format('%y')) != 0){
+            $date = $interval->format('%y years ago');
+        }else if(intval($interval->format('%m')) != 0){
+            $date =  $interval->format('%m months ago');
+        }else if(intval($interval->format('%d')) != 0){
+            $date =  $interval->format('%d days ago');
+        }
         echo '<div class="videoinfo">
-                   <p class="information"> '.$data['view'].' Views | <i class="fa fa-thumbs-up"> </i> '.$likeper.'| 1 day ago </p>
+                   <p class="information"> '.$data['view'].' Views | <i class="fa fa-thumbs-up"> </i> '.$likeper.'| '.$date .' </p>
               </div>
               <div class="videorespo">
                    <button onclick="respobtn1()"><i class="fa fa-thumbs-up" id="thumbup"> </i><p>'.$data['like'].'</p> </button>
                    <button onclick="respobtn2()"><i class="fa fa-thumbs-down" id="thumbdown"> </i><p>'.$data['dislike'].'</p></button>
                    <button onclick="respobtn3()"><i class="fa fa-heart" id="heart"> </i><p>'.$data['save'].'</p> </button>
                    <button onclick="sharebtn()"><i class="fa fa-share-alt"></i> Share </button>
-                 </div>'
+                 </div>';
         ?>
         <div id='sharedivphone'>
             <button onclick='closesharediv()' id='closesharediv'>x</button>
