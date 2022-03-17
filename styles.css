@@ -644,7 +644,7 @@ body {
         margin-left: 10px;
     }
     #videoplay {
-        margin-top:40px;
+        margin-top:10px;
         float: left;
         background: black;
         transition-duration: 0.5s;
