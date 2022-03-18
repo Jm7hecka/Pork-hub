@@ -1,4 +1,4 @@
-<img src='ourlogo.jpg' height='200px' width='100%' >
+<img src='ourlogo.jpg' height='100%' width='100%' >
 
 Pork-hub
 ===================================
