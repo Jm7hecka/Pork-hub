@@ -11,7 +11,7 @@ INSTAGRAM: <a href='https://www.instagram.com/jm7.meme.uninternational'>jm7.meme
 
 WEB: http://pork-hub.herokuapp.com
 
-LOG 
+ABOUT 
 ====================================
 
 IT IS THE INSIGHT FILES OF WEB Pork-hub.
