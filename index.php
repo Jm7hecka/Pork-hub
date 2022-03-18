@@ -5,7 +5,7 @@ require 'array.php';
 
 <html>
 <head>
-    <title> </title>
+    <title>Free Pork Video & Peppa Pig </title>
     <script type="text/javascript" src="app.js"></script>
     <link rel="icon" href="porkhubicon.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
