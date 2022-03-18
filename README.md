@@ -1,9 +1,13 @@
-# Pork-hub
+<img src='ourlogo.jpg' height='200px' width='100%' >
+
+Pork-hub
+===================================
+
 AUTHOR: JM7 UNINTERNATIONAL
 
 CONTACT: jm7memeofficial@gmail.com
 
-INSTAGRAM: @jm7.meme.uninternational 
+INSTAGRAM: <a href='https://www.instagram.com/jm7.meme.uninternational'>jm7.meme.uninternational</a>
 
 WEB: http://pork-hub.herokuapp.com
 
