@@ -5,9 +5,9 @@ require 'array.php';
 
 <html>
 <head>
-    <title>Free Pork Video & Peppa Pig </title>
+    <title> Free Pork Video & Peppa Pig </title>
     <script type="text/javascript" src="app.js"></script>
-    <link rel="icon" href="porkhubicon.png" />
+    <link rel="icon" href="porkhublogo.ico" />
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles.css" />
