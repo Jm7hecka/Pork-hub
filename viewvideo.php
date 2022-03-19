@@ -10,22 +10,23 @@
 
 <html>
 <head>
-    <?php
-    echo '<title>'.$data['vidname'].'</title>';
+    <?php 
+     echo '<title>'.$data["vidname"].'</title>'
     ?>
-    <link rel="icon" href="porkhubicon.png" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="icon" href="porkhublogo.ico" />
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="styles.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css"/>
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+    <script src='https://kit.fontawesome.'>
     <script type="text/javascript" src="videoplay.js"></script>
+    <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-    <div class="top">
+<div class="top">
         <div class="header">
             <a href='./'><img src="porkhublogo.png" class="porkhublogo"></a> 
             <form class="searchbar" action="">
@@ -36,20 +37,58 @@
         <div class="headerbottom">
             <div class="menu">
                 <a href="./" class="menuname">
-                    <p class="itemname"> HOME </p>
+                    <p class="itemname"> HOME</p>
+                    <p class="activeline"></p>
                 </a>
                 <a href="" class="menuname">
-                    <p class="itemname"> PORK VIDEOS <span class="arrow">&#9699;</span></p>
+                    <p class="itemname"> PORK VIDEOS <span class="arrow">&#9699;</span> </p>
                 </a>
                 <a href="" class="menuname">
                     <p class="itemname"> PORKSTARS <span class="arrow">&#9699;</span></p>
                 </a>
-                <a href="" class="menuname">
-                    <p class="itemname"> COMMUNITY <span class="arrow">&#9699;</span></p>
+                <a href="" class="menuname" onmouseover="menuappear('social')" >
+                    <p class="itemname" id='socialbtn'> Social <span class="arrow">&#9699;</span></p>
                 </a>
                 <a href="" class="menuname">
                     <p class="itemname"> PHOTOS <span class="arrow">&#9699;</span></p>
                 </a>
+            </div>
+        </div>
+    </div>
+    <div class="discover">
+            <div class="discovervideo">
+                <p class="discovertitle">Hottest ></p>
+            </div>
+            <div class="discovervideo">
+                <p class="discovertitle">Recommended ></p>
+            </div>
+            <div class="discovervideo">
+                <p class="discovertitle">Pig ></p>
+            </div>
+        </div>
+    <div class='social' id='social'>
+        <p class='socialtext'>Our Social Media</p>
+        <span class='socialtext2'>Follow Porkhub's social media for more information</span>
+        <div class='iconcontainer'>
+            <a href='https://github.com/jm7meme/Pork-hub'>
+                <div class='github , socialdiv'>
+                <i class="fab fa-github , socialicon"></i>
+                <p>Github</p>
+            </div>
+            </a>
+            <div class='twitter , socialdiv' >
+                <i class="fab fa-twitter , socialicon"></i>
+                <p>Twitter</p>
+            </div>
+            <a href='https://www.instagram.com/porkhub_social/'>
+                <div class='instagram , socialdiv'>
+                    <i class="fab fa-instagram , socialicon"></i>
+                    <p>Instagram</p>
+                </div>
+            </a>
+            <div class='discord , socialdiv'>
+                <i class='fab fa-discord , socialicon'></i>
+                <p>Discord</p>
             </div>
         </div>
     </div>
