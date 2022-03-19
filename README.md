@@ -8,7 +8,6 @@ AUTHOR: JM7 UNINTERNATIONAL
 CONTACT: jm7memeofficial@gmail.com
 
 INSTAGRAM: <a href='https://www.instagram.com/jm7.meme.uninternational'>jm7.meme.uninternational</a>
-
            <a href='https://www.instagram.com/porkhub.social'>Porkhub.social</a>
 
 WEB: http://pork-hub.herokuapp.com
