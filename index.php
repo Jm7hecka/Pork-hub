@@ -8,6 +8,7 @@ require 'array.php';
     <title>Free Pork Video & Peppa Pig </title>
     <script type="text/javascript" src="app.js"></script>
     <link rel="icon" href="porkhubicon.png" />
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -34,12 +35,49 @@ require 'array.php';
                 <a href="" class="menuname">
                     <p class="itemname"> PORKSTARS <span class="arrow">&#9699;</span></p>
                 </a>
-                <a href="" class="menuname">
-                    <p class="itemname"> COMMUNITY <span class="arrow">&#9699;</span></p>
+                <a href="" class="menuname" onmouseover="menuappear('social')" >
+                    <p class="itemname" id='socialbtn'> Social <span class="arrow">&#9699;</span></p>
                 </a>
                 <a href="" class="menuname">
                     <p class="itemname"> PHOTOS <span class="arrow">&#9699;</span></p>
                 </a>
+            </div>
+        </div>
+    </div>
+    <div class="discover">
+            <div class="discovervideo">
+                <p class="discovertitle">Hottest ></p>
+            </div>
+            <div class="discovervideo">
+                <p class="discovertitle">Recommended ></p>
+            </div>
+            <div class="discovervideo">
+                <p class="discovertitle">Pig ></p>
+            </div>
+        </div>
+    <div class='social' id='social'>
+        <p class='socialtext'>Our Social Media</p>
+        <span class='socialtext2'>Follow Porkhub's social media for more information</span>
+        <div class='iconcontainer'>
+            <a href='https://github.com/jm7meme/Pork-hub'>
+                <div class='github , socialdiv'>
+                <i class="fab fa-github , socialicon"></i>
+                <p>Github</p>
+            </div>
+            </a>
+            <div class='twitter , socialdiv' >
+                <i class="fab fa-twitter , socialicon"></i>
+                <p>Twitter</p>
+            </div>
+            <a href='https://www.instagram.com/porkhub_social/'>
+                <div class='instagram , socialdiv'>
+                    <i class="fab fa-instagram , socialicon"></i>
+                    <p>Instagram</p>
+                </div>
+            </a>
+            <div class='discord , socialdiv'>
+                <i class='fab fa-discord , socialicon'></i>
+                <p>Discord</p>
             </div>
         </div>
     </div>
