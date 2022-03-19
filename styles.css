@@ -153,13 +153,57 @@ body {
     margin-left: 5px;
     margin-right: 5px;
 }
-.discover {
+.discover, .social{
     position: absolute;
     width:100%;
     z-index: 2;
     height:475px;
     background: black;
     display:none;
+}
+
+.socialtext {
+    color:rgb(255,154,0);
+    position:relative;
+    display:block;
+    font-size:30px;
+    font-weight: 700;
+    width:fit-content;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:50px;
+}
+.socialtext2{
+    position:relative;
+    display:block;
+    color:white;
+    font-size: 20px;
+    width:fit-content;
+    margin:auto;
+}
+.socialicon{
+    color:white;
+    font-size: 80px;
+}
+.iconcontainer {
+    width:fit-content;
+    margin:auto;
+    margin-top:30px;
+}
+.socialdiv :hover{
+    color:#7a7a7a;
+}
+.socialdiv{
+    position:relative;
+    float:left;
+    margin-left:70px;
+    margin-right:70px;
+}
+.socialdiv p {
+    width:fit-content;
+    margin:auto;
+    margin-top:10px;
+    color:white;
 }
 .mainvideo {
     position:relative;
