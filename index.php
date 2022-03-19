@@ -36,7 +36,7 @@ require 'array.php';
                     <p class="itemname"> PORKSTARS <span class="arrow">&#9699;</span></p>
                 </a>
                 <a href="" class="menuname" onmouseover="menuappear('social')" >
-                    <p class="itemname" id='socialbtn'> Social <span class="arrow">&#9699;</span></p>
+                    <p class="itemname" id='socialbtn'> SOCIAL <span class="arrow">&#9699;</span></p>
                 </a>
                 <a href="" class="menuname">
                     <p class="itemname"> PHOTOS <span class="arrow">&#9699;</span></p>
