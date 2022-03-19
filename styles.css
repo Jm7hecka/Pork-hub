@@ -520,7 +520,9 @@ body {
 .playicon {
     border:3px solid rgb(204, 204, 204);
     padding:12px 2px;
-    margin-right:5px;
+    margin-right:7px;
+    margin-top:2px;
+    
 }
 
 .pausebtn{
