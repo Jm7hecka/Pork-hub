@@ -521,12 +521,15 @@ body {
     border:3px solid rgb(204, 204, 204);
     padding:12px 2px;
     margin-right:7px;
-    margin-top:2px;
     
 }
 
 .pausebtn{
     font-size: 4px;
+    width:fit-content;
+    height:fit-content;
+    margin-top:20px;
+    margin-left:5px
 }
 #sharedivphone {
     display:none;
