@@ -100,18 +100,7 @@ require 'array.php';
             </div>
         </div>
     </div>
-    <div class="main">
-        <div class="discover">
-            <div class="discovervideo">
-                <p class="discovertitle">Hottest ></p>
-            </div>
-            <div class="discovervideo">
-                <p class="discovertitle">Recommended ></p>
-            </div>
-            <div class="discovervideo">
-                <p class="discovertitle">Pig ></p>
-            </div>
-        </div>
+    <div class="main" id='main'>
         <a href="" class="nation">
             <p>Hot Pork Videos in World</p>
         </a>
