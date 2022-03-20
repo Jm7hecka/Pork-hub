@@ -7,7 +7,9 @@ body {
     z-index: 1;
     margin:0 auto 0 auto;
     font-family:  Arial, Helvetica, sans-serif;
+    overflow: visible;
 }
+
 .top {
     background-color: rgb(27, 27, 27);
     height:100px;
@@ -84,8 +86,7 @@ body {
 }
 .menuname:hover {
     border-left: 0.8px solid rgb(64,64,64);
-    border-right:0.8px solid rgb(64,64,64);
-    border-top:0.8px solid rgb(64,64,64);
+    border-right:0.8px solid rgb(64,64,64); 
     background-color: rgb(26, 26, 26);
 }
 .itemname {
@@ -269,17 +270,23 @@ body {
 .hidethumb::-webkit-slider-thumb{
     -webkit-appearance: none;
     appearance: none;
-    width:0;
-    height: 0;
+    width:0px;
+    height: 0px;
+    border-radius: 0;
+    background: white;
+    border:0;
+    cursor: pointer;
 }
-
 .hidethumb::-moz-range-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width:0;
-    height: 0;
+    width:0px;
+    height: 0px;
+    border-radius: 0;
+    background: white;
+    border:0;
+    cursor: pointer;
 }
-
 .showthumb::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -422,8 +429,8 @@ body {
     top:0;
     margin-left: -50px;
     margin-top:220px;
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     border-radius:50%;
     background-color: rgba(0, 0, 0, 0.6);
     display: flex;
@@ -564,23 +571,21 @@ body {
 .playicon {
     border:3px solid rgb(204, 204, 204);
     padding:12px 2px;
-    margin-right:7px;
-    
+    margin-right:8px;
 }
 
 .pausebtn{
     font-size: 4px;
-    width:fit-content;
     height:fit-content;
-    margin-top:20px;
-    margin-left:5px
+    margin-top: 20px;
 }
 #sharedivphone {
     display:none;
 }
+
 .lds-spinner {
     color: official;
-    display: none;
+    display: block;
     position: absolute;
     z-index:10;
     left:45%;
@@ -662,9 +667,60 @@ body {
       opacity: 0;
     }
   }
+  .socialmain{
+      width:fit-content;
+      margin-left:auto;
+      margin-right:auto;
+  }
+  .socialimg {
+      height:400px;
+      width:auto;
+      margin-top:10px
+  }
+  .menupage {
+      display:none
+  }
+  #openmenu {
+      display:none
+  }
 @media only screen and (max-width:800px){
     .menu {
         display:none;
+    }
+    #openmenu {
+        background: none;
+        float:left;
+        border:0;
+        margin-top:3%;
+        margin-left:2%;
+        display:block;
+    }
+
+    #openmenu div {
+        width: 24px;
+        height: 2px;
+        background-color: rgb(255,154,0);
+        margin: 6px 0;
+    }
+    #closemenu {
+        position:relative;
+        background: none;
+        border:0;
+        display:inline-block;
+        top:-45%;
+    }
+    #closemenu div:nth-child(1) {
+        width: 24px;
+        height: 2px;
+        background-color: rgb(255,154,0);
+        margin:-2px 1px;
+        transform:rotate(45deg)
+    }
+    #closemenu div:nth-child(2  ) {
+        width: 24px;
+        height: 2px;
+        background-color: rgb(255,154,0);
+        transform:rotate(-45deg)
     }
     .header {
         width:100%;
@@ -676,8 +732,71 @@ body {
         width:100%;
     }
     .porkhublogo {
-        left:30%;
+        display:block;
+        height:70%;
+        left:20%;
         margin-top:10px;
+    }
+
+    .menupage{
+        position:absolute;
+        z-index:10;
+        background: black;
+        height:100vh;
+        width:0;
+        display:block;
+        transition-duration:0.3s;
+        overflow:hidden;
+    }
+    .menutop{
+        width:100%;
+        height:60px;
+        overflow: hidden;
+        display:block;
+        white-space: nowrap;    
+    }
+    .menutop img{
+        position:relative;
+        height:60%;
+        margin-top:4%;
+        margin-left:3%;
+        margin-bottom: 10px;
+        display:inline-block;
+        margin-right:40%;
+    }
+    .menubtn{
+        width:90%;
+        height:8%;
+        background: #131313;
+        border:0;
+        color:white;
+        border-radius: 10px;
+        font-size: 12px;
+        font-weight: 700;
+        margin:6px 5%;
+        
+    }
+    .menubtn p{
+        float:left;
+        margin-left:5%;
+        width:95%;
+        overflow: hidden;
+        text-align: left;
+        white-space: nowrap;
+        padding-top:5px;
+        height:20px;
+    }
+    .menubtn i , .pigicon{
+        display:inline-block;
+        font-size:20px;
+        width:20px;
+        margin-top:-2%;
+        margin-left:5%;
+        margin-right:20%;
+    }
+    .arrow{
+        display:inline-block;
+        float:right;
     }
     .video, .videocover {
         width:100%;
@@ -758,7 +877,7 @@ body {
         margin-top:-4vw;
         font-weight: 400;
     }
-        #progress-barphone {
+    #progress-barphone {
         width:100%;
         -webkit-appearance: none; 
         background:rgb(204, 204, 204);
@@ -896,10 +1015,10 @@ body {
     }
     .lds-spinner {
         color: official;
-        display: block;
+        display: none;
         position: absolute;
         z-index:10;
-        left:43vw;
+        left:43%;
         top:50%;
         width: 40px;
         height: 40px;
@@ -921,4 +1040,31 @@ body {
         height: 9px;
         border-radius: 20%;
         background: rgb(255,154,0);
+      }
+      .socialmain{
+          width:100%;
+      }
+      .socialimg{
+          width:100%;
+          height:auto;
+      }
+      .socialtext2{
+          font-size:16px;
+          width:90%;
+          text-align: center;
+      }
+      .iconcontainer{
+          width:90%;
+          display:block;
+          height:100%;
+          overflow: auto;
+      }
+      .socialdiv{
+          width:60px;
+          height:60px;
+          margin:26px;
+      }
+      .socialicon {
+          font-size:15vw;
+      }
 }
