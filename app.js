@@ -11,3 +11,11 @@ function menuappear(item){
     }
     
 }
+function menuopen(){
+    document.getElementById('menupage').style.width='90%';
+    document.body.style.overflow = 'hidden';
+}
+function menuclose(){
+    document.getElementById('menupage').style.width='0%';
+    document.body.style.overflow = 'auto';
+}
