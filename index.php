@@ -8,6 +8,8 @@ require 'array.php';
     <title> Free Pork Video & Peppa Pig </title>
     <script type="text/javascript" src="app.js"></script>
     <link rel="icon" href="porkhubicon.png" />
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles.css" />
@@ -16,7 +18,23 @@ require 'array.php';
 </head>
 <body>
     <div class="top">
+        <div class='menupage' id='menupage'>
+            <div class='menutop'>
+                <img src='porkhublogo.png'>
+                <button id='closemenu' onclick='menuclose()'>
+                   <div></div><div></div>
+                </button>
+            </div>
+            <button id='' class='menubtn' id='menubtn' onclick="window.location.href='./'"><p><i class="fa fa-home"></i>Home</p> </button>
+            <button id='' class='menubtn' id='menubtn' onclick="window.location.href='./'"><p><i class="fas fa-video"></i>Pork videos <span class="arrow">&#9699;</span></p></button>
+            <button id='' class='menubtn' id='menubtn' onclick="window.location.href='./'"><p><span class="iconify , pigicon" data-icon="mdi:pig" style="color: white;"></span>Porkstars <span class="arrow">&#9699;</span></p></button>
+            <button id='' class='menubtn' id='menubtn' onclick="window.location.href='./socialmedia'"><p><i class="fa fa-male"></i>Social <span class="arrow">&#9699;</span></p> </button>
+            <button id='' class='menubtn' id='menubtn' onclick="window.location.href='./'"><p><i class="fa fa-camera"></i>Photos <span class="arrow">&#9699;</span></p> </button>
+        </div>
         <div class="header">
+            <button id='openmenu' onclick='menuopen()'>
+                <div></div><div></div><div></div>
+            </button>
             <a href='./'><img src="porkhublogo.png" class="porkhublogo"></a> 
             <form class="searchbar" action="">
                 <input type="text" placeholder="Search videos">
@@ -35,7 +53,7 @@ require 'array.php';
                 <a href="" class="menuname">
                     <p class="itemname"> PORKSTARS <span class="arrow">&#9699;</span></p>
                 </a>
-                <a href="" class="menuname" onmouseover="menuappear('social')" >
+                <a href="./socialmedia" class="menuname" onmouseover="menuappear('social')" >
                     <p class="itemname" id='socialbtn'> SOCIAL <span class="arrow">&#9699;</span></p>
                 </a>
                 <a href="" class="menuname">
@@ -44,6 +62,7 @@ require 'array.php';
             </div>
         </div>
     </div>
+    
     <div class="discover">
             <div class="discovervideo">
                 <p class="discovertitle">Hottest ></p>
@@ -54,7 +73,7 @@ require 'array.php';
             <div class="discovervideo">
                 <p class="discovertitle">Pig ></p>
             </div>
-        </div>
+    </div>
     <div class='social' id='social'>
         <p class='socialtext'>Our Social Media</p>
         <span class='socialtext2'>Follow Porkhub's social media for more information</span>
