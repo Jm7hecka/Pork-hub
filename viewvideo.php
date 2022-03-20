@@ -27,8 +27,24 @@
 </head>
 <body>
 <div class="top">
+        <div class='menupage' id='menupage'>
+            <div class='menutop'>
+                <img src='porkhublogo.png'>
+                <button id='closemenu' onclick='menuclose()'>
+                   <div></div><div></div>
+                </button>
+            </div>
+            <button id='' class='menubtn' id='menubtn' onclick="window.location.href='./'"><p><i class="fa fa-home"></i>Home</p> </button>
+            <button id='' class='menubtn' id='menubtn' onclick="window.location.href='./'"><p><i class="fas fa-video"></i>Pork videos <span class="arrow">&#9699;</span></p></button>
+            <button id='' class='menubtn' id='menubtn' onclick="window.location.href='./'"><p><span class="iconify , pigicon" data-icon="mdi:pig" style="color: white;"></span>Porkstars <span class="arrow">&#9699;</span></p></button>
+            <button id='' class='menubtn' id='menubtn' onclick="window.location.href='./socialmedia'"><p><i class="fa fa-male"></i>Social <span class="arrow">&#9699;</span></p> </button>
+            <button id='' class='menubtn' id='menubtn' onclick="window.location.href='./'"><p><i class="fa fa-camera"></i>Photos <span class="arrow">&#9699;</span></p> </button>
+        </div>
         <div class="header">
-            <a href='./'><img src="porkhublogo.png" class="porkhublogo"></a> 
+            <button id='openmenu' onclick='menuopen()'>
+                <div></div><div></div><div></div>
+            </button>
+            <a href='./' class='logoa'><img src="porkhublogo.png" class="porkhublogo"></a> 
             <form class="searchbar" action="">
                 <input type="text" placeholder="Search videos">
                 <button type="submit" value=" "><i class="fa fa-search"></i></button>
@@ -46,7 +62,7 @@
                 <a href="" class="menuname">
                     <p class="itemname"> PORKSTARS <span class="arrow">&#9699;</span></p>
                 </a>
-                <a href="" class="menuname" onmouseover="menuappear('social')" >
+                <a href="./socialmedia" class="menuname" onmouseover="menuappear('social')" >
                     <p class="itemname" id='socialbtn'> SOCIAL <span class="arrow">&#9699;</span></p>
                 </a>
                 <a href="" class="menuname">
