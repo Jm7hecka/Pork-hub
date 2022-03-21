@@ -7,7 +7,7 @@ require 'array.php';
 <head>
     <title> Free Pork Video & Peppa Pig </title>
     <meta name='description'
-      Content='Porkhub, the smallest pork tube in the internet . We provide tons of pork video(if you can provide pork video to us) everyday. The concept of porkhub is the world most famous website pornhub, if you like pornhub, you must also like porkhub. Porkhub is a cool, stunning and hilarious website ever. Porn have pornhub, and pork have porkhub. Porn is the best, and so is pork. We are porkhub, the best website ever(if pornhub doesn't exist). '>
+      Content="Porkhub, the smallest pork tube in the internet . We provide tons of pork video(if you can provide pork video to us) everyday. The concept of porkhub is the world most famous website pornhub, if you like pornhub, you must also like porkhub. Porkhub is a cool, stunning and hilarious website ever. Porn have pornhub, and pork have porkhub. Porn is the best, and so is pork. We are porkhub, the best website ever(if pornhub doesn't exist). ">
     <script type="text/javascript" src="app.js"></script>
     <link rel="icon" href="porkhubicon.png" />
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
