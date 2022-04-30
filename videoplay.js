@@ -1,7 +1,7 @@
 var player = document.getElementById('videoplay');
 var video = document.getElementById('videoplayer');
 
-if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
     var progressBar = document.getElementById('progress-barphone');
     document.getElementById('phoneplay').textContent = "\u25B7";
     progressBar.addEventListener('input', changetime);
@@ -11,8 +11,17 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     var duration = document.getElementById('duration1');
     var fullscreenicon= document.getElementById('fullscreen1');
     var timeplayed = document.getElementById('timeplayed1');
-    
-} else{
+  
+} else if(/iPad/i.test(navigator.userAgent)){
+    var progressBar = document.getElementById('progress-bar');
+    progressBar.addEventListener('input', changetime);
+    player.addEventListener('timeupdate', timeplayed);
+    player.addEventListener('ended', ended);
+    window.addEventListener('keypress', shortcut);
+    var duration = document.getElementById('duration');
+    var timeplayed = document.getElementById('timeplayed');
+    var fullscreenicon= document.getElementById('fullscreen');
+}else{
     var progressBar = document.getElementById('progress-bar');
     progressBar.addEventListener('input', changetime);
     player.addEventListener('timeupdate', timeplayed);
@@ -27,6 +36,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     var fullscreenicon= document.getElementById('fullscreen');
 }
 
+function loading() {
+    document.getElementById('lds-spinner').style.display='block';
+}
 
 function shortcut(event) {
     var event = window.event;
@@ -58,7 +70,7 @@ function formatTime(timeInSeconds) {
 }
 
 function initializeVideo() {
-    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
         document.getElementById('lds-spinner').style.display='none';
         document.getElementById('phoneplay').textContent = "\u25B7";
         controlappearphone()
@@ -68,7 +80,23 @@ function initializeVideo() {
         duration.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`);
         progressBar.setAttribute('max', player.duration);
         player.setAttribute('onclick', 'controlappearphone()');
-    } else{
+    } else if(/iPad/i.test(navigator.userAgent)){
+        player.setAttribute('onclick', 'controlappear()');
+        document.getElementById('lds-spinner').style.display='none';
+        document.getElementById('playback-animation').style.opacity='0'
+        document.getElementById('progress-bar').style.display='block';
+        document.getElementById('icon').classList.remove('animationimg')
+        document.getElementById('volumebar').value = 1;
+        document.getElementById('volumebar').style.background=' rgb(255,154,0)';
+        document.getElementById('videocontrol').style.display='flex'; 
+        document.getElementById('progress-bar').style.display='block';
+        const videoDuration = Math.round(player.duration);
+        const time = formatTime(videoDuration);
+        duration.innerText = `${time.minutes}:${time.seconds}`;
+        duration.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`);
+        progressBar.setAttribute('max', player.duration);
+        controlappear()
+    }else {
         document.getElementById('lds-spinner').style.display='none';
         document.getElementById('playback-animation').style.opacity='0'
         document.getElementById('progress-bar').style.display='block';
@@ -86,9 +114,7 @@ function initializeVideo() {
         controlappear()
     }
 }
-function loading() {
-    document.getElementById('lds-spinner').style.display='block';
-}
+
 function playvideo() {
     var element = document.getElementById('play');
     if(player.paused) {
@@ -99,7 +125,7 @@ function playvideo() {
         document.getElementById('icon').src='playicon.png';
         document.getElementById('icon').classList.add('playiconanimate');
         document.getElementById('icon').classList.remove('pauseiconanimate');
-        
+        animatePlayback();
 
     }else {
         player.pause();
@@ -152,13 +178,11 @@ function timeplayed() {
     timeplayed.innerText = `${time.minutes}:${time.seconds}`;
     timeplayed.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`);
     var playvalue = (progressBar.value/player.duration)*100 +'%'; 
-    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
         progressBar.style.background=`linear-gradient(to right,  rgb(255,255,255) ${playvalue}, rgb(204, 204, 204) ${playvalue},  rgb(204, 204, 204) 100%)`;
     }else{
          progressBar.style.background=`linear-gradient(to right,  rgb(255,154,0) ${playvalue}, rgb(27,27,27) ${playvalue},  rgb(27,27,27) 100%)`;
     }
-    
-    
 }
 function barappear(){
     var volume = document.getElementById('volume');
@@ -177,6 +201,7 @@ function barappear(){
 }
 function bardisappear(){
     var volumebar = document.getElementById('volumebar');
+    volume.addEventListener('mouseenter', barappear);
     window.setTimeout(function() { 
         volumebar.style.width='0px';
         volumebar.classList.remove('showthumb');
@@ -192,18 +217,15 @@ function fullscreen(){
     } else if (document.webkitFullscreenElement) {
         document.webkitExitFullscreen();
         normalscreen();
-    } else if (player.webkitEnterFullscreen ) {
-        player.webkitEnterFullscreen() ;
+    } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
         updateFullscreen();
-    } else if(video.webkitRequestFullscreen) {
-        video.webkitRequestFullscreen()
+    } else if (player.webkitEnterFullscreen){
+        player.webkitEnterFullscreen();
         updateFullscreen();
-    } else {
-        if(video.enterFullscreen){
-            video.enterFullscreen();
-        }else{
-            video.requestFullscreen();
-        }
+    }
+    else {
+        video.requestFullscreen(); 
         updateFullscreen();
     }
 }
@@ -225,19 +247,33 @@ function normalscreen() {
     document.getElementById('fullscreen').innerHTML='<i class="material-icons" id="fullicon">&#xe5d0;</i>';
 }
 function controlappear(){
-    document.getElementById('videocontrol').style.zIndex='0';
-    document.getElementById('videocontrol').style.marginTop='-40px';
-    document.getElementById('progress').style.marginTop='-45px';
-    document.getElementById('videocontrol').addEventListener('mouseenter', controlappear);
-    document.getElementById('videocontrol').addEventListener('mouseleave', function() {window.setTimeout(controldisappear(), 3000);} )
-    
+    if(/iPad/i.test(navigator.userAgent)){
+        player.setAttribute('onclick', 'controldisappear()')
+        document.getElementById('videocontrol').style.zIndex='0';
+        document.getElementById('videocontrol').style.marginTop='0px';
+        document.getElementById('progress').style.marginTop='-45px';
+    }else{
+        document.getElementById('videocontrol').style.zIndex='0';
+        document.getElementById('videocontrol').style.marginTop='-40px';
+        document.getElementById('progress').style.marginTop='-45px';
+        document.getElementById('videocontrol').addEventListener('mouseenter', controlappear);
+        document.getElementById('videocontrol').addEventListener('mouseleave', function() {window.setTimeout(controldisappear(), 3000);} )
+    }
 }
 function controldisappear(){
-    setTimeout(function() {
+    if(/iPad/i.test(navigator.userAgent)){
         document.getElementById('videocontrol').style.zIndex='-1';
         document.getElementById('videocontrol').style.marginTop='10px';
-        document.getElementById('progress').style.marginTop='10px';}, 3000);
+        document.getElementById('progress').style.marginTop='10px';
+        player.setAttribute('onclick', 'controlappear()')
+    }else{
+        setTimeout(function() {
+            document.getElementById('videocontrol').style.zIndex='-1';
+            document.getElementById('videocontrol').style.marginTop='10px';
+            document.getElementById('progress').style.marginTop='10px';
+        }, 3000);
     
+    }
 }
 var bar = document.getElementById('videocontrolphone');
 var playbutton = document.getElementById('phoneplay');
@@ -292,7 +328,7 @@ function respobtn3(){
     
 }
 function sharebtn(){
-    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
         document.getElementById('sharedivphone').style.display='block';
         document.getElementById('shareurl').value = window.location.href;
     }else{
@@ -309,10 +345,10 @@ function changetime() {
     var value = progressBar.value;
     player.currentTime = value; 
     var playvalue = (progressBar.value/player.duration)*100 +'%'; 
-    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-        progressBar.style.background=`linear-gradient(to right,  rgb(255,255,255) ${playvalue}, rgb(204, 204, 204) ${playvalue},  rgb(204, 204, 204) 100%)`;
+    if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+       document.getElementById('progress-barphone').style.background=`linear-gradient(to right,  rgb(255,255,255) ${playvalue}, rgb(204, 204, 204) ${playvalue},  rgb(204, 204, 204)`;
     }else{
-        progressBar.style.background=`linear-gradient(to right,  rgb(255,154,0) ${playvalue}, rgb(27,27,27) ${playvalue},  rgb(27,27,27) 100%)`;
+        document.getElementById('progress-bar').style.background=`linear-gradient(to right,  rgb(255,154,0) ${playvalue}, rgb(27,27,27) ${playvalue},  rgb(27,27,27) 100%)`;
     }
 }
 function ended() {
